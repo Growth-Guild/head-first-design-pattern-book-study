@@ -1,5 +1,8 @@
-package chapter_1.duck;
+package com.example.headfirstdesignpatternbookstudy.chapter_1.duck;
 
+import chapter_1.duck.Duck;
+import chapter_1.duck.FlyWithWings;
+import chapter_1.duck.MallardDuck;
 import org.junit.jupiter.api.Test;
 
 class MallardDuckTest {
