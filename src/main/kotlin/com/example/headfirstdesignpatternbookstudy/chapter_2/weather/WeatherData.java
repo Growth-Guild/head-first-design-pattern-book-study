@@ -3,12 +3,9 @@ package com.example.headfirstdesignpatternbookstudy.chapter_2.weather;
 import java.util.Objects;
 
 public class WeatherData {
-    private float temperature;
-    private float humidity;
-    private float pressure;
-
-    private WeatherData() {
-    }
+    private final float temperature;
+    private final float humidity;
+    private final float pressure;
 
     private WeatherData(float temperature, float humidity, float pressure) {
         this.temperature = temperature;
