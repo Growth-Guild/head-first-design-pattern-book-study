@@ -1,5 +1,6 @@
 package com.example.headfirstdesignpatternbookstudy.chapter_2.weather;
 
+import chapter_2.weather.WeatherData;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 

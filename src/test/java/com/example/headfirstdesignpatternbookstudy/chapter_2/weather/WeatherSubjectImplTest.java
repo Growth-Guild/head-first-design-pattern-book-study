@@ -1,8 +1,11 @@
 package com.example.headfirstdesignpatternbookstudy.chapter_2.weather;
 
+import chapter_2.weather.Observer;
+import chapter_2.weather.WeatherData;
+import chapter_2.weather.WeatherSubject;
+import chapter_2.weather.WeatherSubjectImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.mockito.Mock;
 
 import java.util.ArrayList;
 import java.util.List;

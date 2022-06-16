@@ -1,4 +1,4 @@
-package com.example.headfirstdesignpatternbookstudy.chapter_2.weather;
+package chapter_2.weather;
 
 public interface WeatherSubject {
     void registerObserver(Observer observer);

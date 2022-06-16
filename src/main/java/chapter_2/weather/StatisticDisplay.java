@@ -1,4 +1,4 @@
-package com.example.headfirstdesignpatternbookstudy.chapter_2.weather;
+package chapter_2.weather;
 
 public class StatisticDisplay implements Observer {
     private WeatherData weatherData;
