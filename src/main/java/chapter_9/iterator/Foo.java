@@ -1,4 +1,4 @@
-package chapter_9;
+package chapter_9.iterator;
 
 public class Foo {
     private String name;
