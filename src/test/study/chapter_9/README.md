@@ -70,3 +70,65 @@ public class IteratorSimpleMain {
     }
 }
 ```
+
+## 컴포지트 패턴 (Composite Pattern)
+![컴포지트 패턴](composite_pattern.png)
+* 객체를 트리 구조로 구성하여 부분-전체 계층 구조를 구현한다.
+* 컴포지트 패턴은 클라이언트에서 개별 객체와 복합 객체를 똑같은 방법으로 다룰 수 있다.
+```java
+public abstract class FooComponent {
+    public String getName() {
+        throw new UnsupportedOperationException();
+    }
+}
+
+public class Foo extends FooComponent {
+  private List<FooComponent> fooComponents;
+  private String name;
+
+  public Foo(List<FooComponent> fooComponents, String name) {
+    this.fooComponents = fooComponents;
+    this.name = name;
+  }
+
+  @Override
+  public String getName() {
+    return name + "\n" +
+            fooComponents.stream()
+                    .map(FooComponent::getName)
+                    .collect(Collectors.joining(", "));
+  }
+}
+
+public class SubFoo extends FooComponent{
+  private String name;
+
+  public SubFoo(String name) {
+    this.name = name;
+  }
+
+  @Override
+  public String getName() {
+    return name;
+  }
+}
+```
+```java
+public class SimpleMain {
+    public static void main(String[] args) {
+        FooComponent foo = new Foo(
+                List.of(
+                        new SubFoo("Sub Hello"),
+                        new SubFoo("Sub World")
+                ),
+                "Foo Hello World!"
+        );
+
+        System.out.println(foo.getName());
+    }
+}
+```
+* 컴포지트 패턴은 한 클래스에서 한 역할만 맡아야 한다는 단일 역할 원칙을 깨는 대신 투명성을 확보하는 패턴이다.
+* 투명성(transparency)은 컴포넌트 인터페이스에 복합 객체와 단일 객체를 똑같은 방식으로 처리할 수 있도록 하는 성질이다.
+* 두 종류의 기능이 함께 존재하기 때문에 안정성은 떨어질 수 있다. (상황에 따라서 투명성과 안정성 사이에 트레이드 오프를 잘 고려해야 한다.)
+* 컴포지트 패턴은 클라이언트 코드를 단순화 시킬 수 있다.
