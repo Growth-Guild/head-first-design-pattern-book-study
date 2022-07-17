@@ -18,9 +18,55 @@ interface Iterator<T> {
 ### 디자인 원칙
 > 어떤 클래스가 바뀌는 이유는 하나뿐이어야 한다.
 
-## Iterable 인터페이스
+### Iterable 인터페이스
 * 자바의 모든 컬렉션 유형은 Iterable 인터페이스를 구현한다.
 * Iterable을 구현하면 iterator() 메서드를 구현한다.
 * iterator() 메서드는 Iterator 인터페이스를 구현하는 반복자를 리턴한다.
 * Iterable 인터페이스는 컬렉션에 있는 항목을 대상으로 반복 작업을 수행하는 방법을 제공하는 forEach() 메서드가 기본으로 제공된다.
 * 향상된 for문으로 편리한 문법적 기능을 제공한다.
+
+```java
+public class Foo {
+  private String name;
+
+  public Foo(String name) {
+    this.name = name;
+  }
+
+  public String getName() {
+    return name;
+  }
+}
+
+public class FooIterator implements Iterable<Foo> {
+  private List<Foo> foos;
+  private int position = 0;
+
+  public FooIterator(List<Foo> foos) {
+    this.foos = foos;
+  }
+
+  @NotNull
+  @Override
+  public Iterator<Foo> iterator() {
+    return foos.iterator();
+  }
+}
+```
+```java
+public class IteratorSimpleMain {
+    public static void main(String[] args) {
+        List<Foo> foos = List.of(
+                new Foo("hello"),
+                new Foo("World"),
+                new Foo ("goodbye")
+        );
+
+        FooIterator fooIterator = new FooIterator(foos);
+
+        for (Foo foo : fooIterator) {
+            System.out.println(foo.getName());
+        }
+    }
+}
+```
